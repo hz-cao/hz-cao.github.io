@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="GeomFlow: Geometry-aware adaptive diffusion model via Hessian information."
+    />
+    <title>hz-cao - GeomFlow</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="#">hz-cao</a>
+      <nav aria-label="Project links">
+        <a href="assets/geomflow-paper.pdf">Paper</a>
+        <a href="https://github.com/hz-cao/GeomFlow">Code</a>
+        <a href="#bibtex">BibTeX</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="hero-copy">
+          <p class="venue">Neurocomputing, 2026</p>
+          <h1>GeomFlow</h1>
+          <p class="subtitle">
+            Geometry-aware adaptive diffusion model via Hessian information.
+          </p>
+          <p class="authors">
+            hz-cao / Haozhuo Cao, Xiaorui Wang, Liyang Yu, Wangcai Ding
+          </p>
+          <div class="actions" aria-label="Primary project links">
+            <a class="button primary" href="assets/geomflow-paper.pdf">Paper PDF</a>
+            <a class="button" href="https://github.com/hz-cao/GeomFlow">Code</a>
+            <a class="button" href="assets/geomflow-architecture.pdf">Architecture PDF</a>
+          </div>
+        </div>
+        <figure class="architecture">
+          <a href="assets/geomflow-architecture.pdf" aria-label="Open architecture PDF">
+            <img
+              src="assets/geomflow-architecture.png"
+              alt="GeomFlow architecture diagram showing LNS, GCE, and preconditioned sampler."
+            />
+          </a>
+          <figcaption>
+            Geometry-aware diffusion with LNS, Hutchinson trace GCE, and preconditioned sampling.
+          </figcaption>
+        </figure>
+      </section>
+
+      <section class="overview" aria-labelledby="overview-title">
+        <div class="section-inner">
+          <h2 id="overview-title">Overview</h2>
+          <p>
+            GeomFlow addresses spatially uniform diffusion by adapting the reverse process to local
+            geometric complexity. A learnable noise schedule controls global temporal dynamics,
+            while a Hessian-trace estimator modulates local diffusion strength.
+          </p>
+          <div class="feature-grid">
+            <article>
+              <h3>Learnable Noise Schedule</h3>
+              <p>
+                The LNS pathway parameterizes beta(t) and aligns global noise progression with
+                the score network.
+              </p>
+            </article>
+            <article>
+              <h3>Geometric Complexity Estimator</h3>
+              <p>
+                Hutchinson trace estimates local curvature from the score field and produces
+                gamma squared for spatial modulation.
+              </p>
+            </article>
+            <article>
+              <h3>Preconditioned Sampler</h3>
+              <p>
+                The reverse update uses gamma squared as a Riemannian-style preconditioner for
+                geometry-aware image generation and inpainting.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="results" aria-labelledby="results-title">
+        <div class="section-inner">
+          <h2 id="results-title">Reported Results</h2>
+          <div class="metrics">
+            <div>
+              <span class="metric">2.14</span>
+              <span class="label">CIFAR-10 FID</span>
+            </div>
+            <div>
+              <span class="metric">9.92</span>
+              <span class="label">CIFAR-10 IS</span>
+            </div>
+            <div>
+              <span class="metric">3.17</span>
+              <span class="label">CelebA-HQ FID</span>
+            </div>
+            <div>
+              <span class="metric">6.12</span>
+              <span class="label">LSUN Church FID</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="citation" id="bibtex" aria-labelledby="citation-title">
+        <div class="section-inner">
+          <h2 id="citation-title">BibTeX</h2>
+          <pre><code>@article{cao2026geomflow,
+  title = {GeomFlow: Geometry-aware adaptive diffusion model via Hessian information},
+  author = {Cao, Haozhuo and Wang, Xiaorui and Yu, Liyang and Ding, Wangcai},
+  journal = {Neurocomputing},
+  year = {2026},
+  doi = {10.1016/j.neucom.2026.132934}
+}</code></pre>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
