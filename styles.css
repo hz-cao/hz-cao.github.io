@@ -192,15 +192,15 @@ h2 {
 
 .publication {
   display: grid;
-  grid-template-columns: 188px minmax(0, 1fr);
-  gap: 26px;
+  grid-template-columns: 160px minmax(0, 1fr);
+  gap: 24px;
   align-items: start;
   margin-top: 0;
 }
 
 .paper-thumb {
   display: block;
-  width: 188px;
+  width: 160px;
   aspect-ratio: 16 / 9;
   overflow: hidden;
   border-radius: 4px;
@@ -296,7 +296,7 @@ h2 {
   }
 
   .paper-thumb {
-    width: min(100%, 260px);
+    width: min(100%, 220px);
   }
 }
 
