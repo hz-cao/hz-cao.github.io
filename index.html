@@ -15,7 +15,7 @@
       <a class="brand" href="#">hz-cao</a>
       <nav aria-label="Primary links">
         <a href="assets/resume.pdf">CV</a>
-        <a href="assets/geomflow-paper.pdf">Paper</a>
+        <a href="#publications">Papers</a>
         <a href="https://github.com/hz-cao/GeomFlow">Code</a>
       </nav>
     </header>
@@ -23,7 +23,7 @@
     <main>
       <section class="profile">
         <div class="profile-copy">
-          <p class="eyebrow">Qinghai University · Computer Science</p>
+          <p class="eyebrow">Qinghai University &middot; Computer Science</p>
           <h1>Haozhuo Cao</h1>
           <p class="handle">hz-cao</p>
           <p class="intro">
@@ -42,29 +42,29 @@
         </figure>
       </section>
 
-      <section class="project" aria-labelledby="project-title">
-        <div class="project-copy">
-          <p class="eyebrow">Featured paper · Neurocomputing, 2026</p>
-          <h2 id="project-title">GeomFlow</h2>
-          <p>
-            Geometry-aware adaptive diffusion model via Hessian information. GeomFlow combines a
-            learnable noise schedule, Hutchinson Hessian-trace geometric complexity estimation, and
-            preconditioned reverse sampling for structure-aware generation.
-          </p>
-          <div class="project-links" aria-label="GeomFlow links">
-            <a href="assets/geomflow-paper.pdf">Paper</a>
-            <a href="https://github.com/hz-cao/GeomFlow">Code</a>
-            <a href="assets/geomflow-architecture.pdf">Architecture PDF</a>
-          </div>
+      <section class="publications" id="publications" aria-labelledby="publications-title">
+        <div class="section-inner">
+          <h2 class="sr-only" id="publications-title">Publications</h2>
+          <article class="publication">
+            <a class="paper-thumb" href="assets/geomflow-paper.pdf" aria-label="Open GeomFlow paper PDF">
+              <img
+                src="assets/geomflow-architecture.png"
+                alt="Thumbnail of the GeomFlow architecture diagram."
+              />
+            </a>
+            <div class="paper-copy">
+              <h3>GeomFlow: Geometry-aware adaptive diffusion model via Hessian information</h3>
+              <p class="paper-authors">
+                <a href="#">Haozhuo Cao</a>, Xiaorui Wang, Liyang Yu, and Wangcai Ding
+              </p>
+              <p class="paper-venue">Neurocomputing, 2026</p>
+              <div class="paper-links" aria-label="GeomFlow publication links">
+                <a href="assets/geomflow-paper.pdf">paper</a>
+                <a href="assets/geomflow.bib">bibtex</a>
+              </div>
+            </div>
+          </article>
         </div>
-        <figure class="architecture">
-          <a href="assets/geomflow-architecture.pdf" aria-label="Open GeomFlow architecture PDF">
-            <img
-              src="assets/geomflow-architecture.png"
-              alt="GeomFlow architecture diagram with LNS, GCE, and preconditioned sampler."
-            />
-          </a>
-        </figure>
       </section>
     </main>
   </body>
