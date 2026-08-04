@@ -8,7 +8,7 @@
       content="Usage and reproduction notes for Haozhuo Cao's LoongArch32 FPGA CPU project."
     />
     <title>LoongArch32 CPU on FPGA · hz-cao</title>
-    <link rel="stylesheet" href="../../styles.css?v=20260804-1" />
+    <link rel="stylesheet" href="../../styles.css?v=20260804-2" />
   </head>
   <body>
     <header class="site-header">
@@ -73,6 +73,24 @@
           <div><strong>CoreMark cold run</strong><span>Switch 7C · PASS</span></div>
           <div><strong>inner_product cold run</strong><span>Switch 6F · PASS</span></div>
         </div>
+      </section>
+
+      <section class="project-section" aria-labelledby="evidence-title">
+        <h2 id="evidence-title">Physical FPGA board evidence</h2>
+        <p>
+          The functional test photo shows the board displaying <code>3A 00 00 3A</code>.
+          The standalone repository also contains all forty performance-test photos: each
+          <code>N-red.jpg</code> marks progress at item N, while <code>N.jpg</code> is the matching score photo.
+        </p>
+        <figure class="evidence-feature">
+          <a href="evidence/functional/functional-3a.jpg">
+            <img loading="lazy" src="evidence/functional/functional-3a.jpg" alt="FPGA board showing the functional 3A result." />
+          </a>
+          <figcaption>Functional board test: the seven-segment display shows 3A 00 00 3A.</figcaption>
+        </figure>
+        <p>
+          <a href="https://github.com/hz-cao/cpu-kernel/blob/main/evidence/README.md">Open the complete board-test photo index and performance gallery.</a>
+        </p>
       </section>
 
       <section class="project-section" aria-labelledby="source-title">

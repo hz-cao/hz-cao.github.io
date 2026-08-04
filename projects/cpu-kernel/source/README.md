@@ -1,4 +1,4 @@
-# 我们自己动手实践的一个 CPU 工程
+# LoongArch32 Out-of-Order CPU on FPGA
 
 ![CPU architecture cover](assets/cpu_kernel.svg)
 
@@ -9,5 +9,6 @@
 - CPU RTL：[`IP/myCPU`](IP/myCPU)
 - 最终 bit/ltx：[`fpga/nscscc-team/run_vivado/bitstreams`](fpga/nscscc-team/run_vivado/bitstreams)
 - 最终报告和板测记录：[`reports/final`](reports/final)
+- 板级实测照片与测试说明：[`evidence/README.md`](evidence/README.md)
 
 当前默认 `soc_config.vh` 为性能测试模式；所有构建脚本都会按 `func`/`perf` 自动切换，不需要手工改宏。
