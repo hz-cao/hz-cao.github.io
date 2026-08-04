@@ -1,12 +1,12 @@
-# 基于Chiplab的龙芯杯团体赛开发环境 
+# 我们自己动手实践的一个 CPU：Chiplab 开发环境
 ## 1. 前言
-Chiplab支持龙芯杯团体赛的功能测试与性能测试，有关Chiplab的完整介绍请参考[CHIPLAB使用介绍](https://chiplab.readthedocs.io/)
+Chiplab支持这个 CPU 的功能测试与性能测试，有关Chiplab的完整介绍请参考[CHIPLAB使用介绍](https://chiplab.readthedocs.io/)
 
 ## 2. 目录结构
 .   
 ├── chip&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;SoC顶层。    
 │　　└── soc_demo&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;SoC顶层代码实例。   
-│　　　　　├── nscscc-team&emsp;&emsp;&emsp;&ensp;<font color='red'>龙芯杯SoC顶层代码。</font>   
+│　　　　　├── nscscc-team&emsp;&emsp;&emsp;&ensp;<font color='red'>CPU/FPGASoC顶层代码。</font>   
 │　　　　　　　　├── AMBA&emsp;&emsp;&emsp;&emsp;&emsp;&ensp;<font color='red'>包含axi3转axi4协议桥和axi跨时钟域模块</font>   
 │　　　　　　　　├── CONFREG&emsp;&emsp;&emsp;&emsp;&emsp;<font color='red'>confreg 模块，连接 CPU 与开发板上数码管、拨码开关等 GPIO 类设备。</font>   
 │　　　　　　　　├── ram_wrap&emsp;&emsp;&emsp;&emsp;&emsp;<font color='red'>包含ddr3控制器和片上SRAM的封装层，增加固定延迟设置。</font>   
@@ -19,7 +19,7 @@ Chiplab支持龙芯杯团体赛的功能测试与性能测试，有关Chiplab的
 │　　　　　├── Baixin&emsp;&emsp;&emsp;&emsp;&emsp;&ensp;百芯开发板SoC顶层代码。   
 │　　　　　└── sim&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;仿真SoC顶层代码   
 ├── fpga&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;综合工程。   
-│　　├── nscscc-team&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<font color='red'>龙芯杯fpga工程及所需嵌入式软件。</font>   
+│　　├── nscscc-team&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<font color='red'>CPU/FPGAfpga工程及所需嵌入式软件。</font>   
 │　　　　　├── run_vivado&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<font color='red'>Vivado工程目录</font>    
 │　　　　　　　　├── create_project.tcl&emsp;&emsp;&emsp;<font color='red'>Vivado工程创建脚本</font>    
 │　　　　　　　　├── run_func_test.tcl&emsp;&emsp;&emsp;<font color='red'>运行功能测试脚本</font>    
@@ -56,8 +56,8 @@ Chiplab支持龙芯杯团体赛的功能测试与性能测试，有关Chiplab的
 │　　├── bsp&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;板级支持包。   
 │　　├── examples&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;示例程序。   
 │　　　　　├── func&emsp;&emsp;&emsp;&emsp;功能测试，验证处理器核设计是否与指令手册一致。  
-│　　　　　├── nscscc_func&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<font color='red'>龙芯杯功能测试，仅含Makefile，使用func/func_src的源文件。</font>  
-│　　　　　├── nscscc_perf&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<font color='red'>龙芯杯性能测试，包含20个性能测试程序。</font>   
+│　　　　　├── nscscc_func&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<font color='red'>CPU/FPGA功能测试，仅含Makefile，使用func/func_src的源文件。</font>  
+│　　　　　├── nscscc_perf&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<font color='red'>CPU/FPGA性能测试，包含20个性能测试程序。</font>   
 │　　　　　├── hello_world&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&ensp;基础测试程序。   
 │　　　　　├── coremark&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&ensp;coremark性能测试程序。   
 │　　　　　├── dhrystone&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&ensp;dhrystone性能测试程序。  
@@ -349,7 +349,7 @@ ReadRegsToFile 0x1c000000 10 ../log.txt
 
 2.执行过程中，单色LED全灭，双色LED灯一红一绿，数码管高8位和低8位同步累加；
 
-3.结束时，单色LED全灭，双色LED灯亮两绿，数码管高8位和低8位数值相同，对应测试功能点数目，龙芯杯功能测试应在数码管上出现3A 00 00 3A。
+3.结束时，单色LED全灭，双色LED灯亮两绿，数码管高8位和低8位数值相同，对应测试功能点数目，CPU/FPGA功能测试应在数码管上出现3A 00 00 3A。
 
 如果func执行过程中出错了，则数码管高8位和低8位第一次不同处即为测试出错的功能点编号，且最后的结果是单色LED全亮，双色LED灯亮两红，数码管高8位和低8位数值不同。
 

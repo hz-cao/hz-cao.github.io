@@ -1,6 +1,6 @@
 ## 1. 总述
 
-本目录包含板级支持包bsp和示例程序examples，示例程序支持在qemu中运行、在verilator中使用nemu进行difftest前仿、在龙芯杯SoC中Vivado前仿与FPGA上板。
+本目录包含板级支持包bsp和示例程序examples，示例程序支持在qemu中运行、在verilator中使用nemu进行difftest前仿、在CPU/FPGASoC中Vivado前仿与FPGA上板。
 
 bsp中包含三个文件夹——drivers、env、include。drivers用于保存外设驱动程序，目前仅包含CONFREG中的TIMER的驱动，用于获取时间。env文件夹中包含启动文件start.s、链接脚本separate.lds、bin转mif和coe的C程序convert.c。include是板级支持包的头文件目录。common.mk是公用Makefile，用于将板级支持包的内容添加进编译过程中。
 
@@ -48,7 +48,7 @@ $ make
 
 注三：由于nemu不支持rdcntvl.w指令，而c_prg中的程序调用了clock()函数，该函数使用rdcntvl.w指令实现，因此目前c_prg中的程序暂时无法在Verilator环境下仿真。
 
-### 3.3 使用龙芯杯SoC在Vivado中前仿
+### 3.3 使用CPU/FPGASoC在Vivado中前仿
 
 首先编译生成软件bin文件
 
@@ -79,7 +79,7 @@ run all
 ```
 之后就能在vivado终端中看到`Hello Loongarch32r!`
 
-### 3.4 使用龙芯杯SoC在FPGA上运行
+### 3.4 使用CPU/FPGASoC在FPGA上运行
 
 使用的bin文件依然是仿真中使用的bin文件。完成FPGAbit生成和下载后，使用JTAG将软件bin文件下载至内存DDR3中。
 
@@ -126,7 +126,7 @@ unsigned long CONFREG_TIMER_BASE = 0xbfafe000;			//CONFREG计数器的虚地址
 unsigned long CONFREG_CLOCKS_PER_SEC = 100000000L;		//CONFREG时钟频率
 unsigned long CORE_CLOCKS_PER_SEC = 33000000L;			//处理器核时钟频率
 ```
-里面的数值需根据SoC实际情况给出，若使用CHIPLAB提供的龙芯杯SoC则不需变更参数。
+里面的数值需根据SoC实际情况给出，若使用CHIPLAB提供的CPU/FPGASoC则不需变更参数。
 
 ### 步骤二：修改Makefile
 
@@ -149,7 +149,7 @@ test)
 `
 完成修改，可以去尝试跑qemu跑verilator跑vivado跑FPGA了。
 
-## 5. 运行龙芯杯功能测试与性能测试
+## 5. 运行CPU/FPGA功能测试与性能测试
 
 ### 5.1 功能测试
 
