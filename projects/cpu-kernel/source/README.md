@@ -1,6 +1,14 @@
 # LoongArch32 Out-of-Order CPU on FPGA
 
-![CPU architecture cover](assets/cpu_kernel.svg)
+[![LoongArch32 CPU architecture cover](assets/cpu_kernel_cover.png)](assets/cpu_kernel.pdf)
+
+## FPGA board test evidence
+
+The CPU has been programmed onto the FPGA board through the Xilinx JTAG interface. The functional board test reaches the expected `3A 00 00 3A` display result:
+
+[![FPGA board functional test showing 3A](../evidence/functional/functional-3a.jpg)](../evidence/functional/functional-3a.jpg)
+
+The complete set of twenty performance-test pairs is documented in [`evidence/README.md`](../evidence/README.md). Files ending in `-red` record the progress marker for a test item; the matching numbered file records the score shown on the board.
 
 本目录基于 ChipLab 项目实践基线提交 `a0205122a7186144dcfd73a836ff9b436638b1da`，目标环境为 Windows、Vivado 2023.2、`xc7a200tfbg676-2`。
 
