@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Usage and reproduction notes for Haozhuo Cao's LoongArch32 FPGA CPU project."
+    />
+    <title>LoongArch32 CPU on FPGA · hz-cao</title>
+    <link rel="stylesheet" href="../../styles.css?v=20260804-1" />
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="../../">hz-cao</a>
+      <nav aria-label="Project links">
+        <a href="../../#publications">Papers</a>
+        <a href="https://github.com/hz-cao/hz-cao.github.io/tree/main/projects/cpu-kernel/source">Code</a>
+      </nav>
+    </header>
+
+    <main class="project-page">
+      <div class="project-hero">
+        <img src="../../assets/cpu_kernel.svg" alt="CPU Kernel project cover graphic." />
+        <div>
+          <p class="project-kicker">FPGA / CPU Architecture Project · 2026 08</p>
+          <h1>LoongArch32 Out-of-Order CPU on FPGA</h1>
+          <p class="project-author">Author: <a href="https://github.com/hz-cao">Haozhuo Cao</a></p>
+          <div class="project-links">
+            <a class="project-button" href="https://github.com/hz-cao/hz-cao.github.io/tree/main/projects/cpu-kernel/source">Code</a>
+            <a class="project-button" href="../../">Homepage</a>
+          </div>
+        </div>
+      </div>
+
+      <section class="project-section" aria-labelledby="overview-title">
+        <h2 id="overview-title">Overview</h2>
+        <p>
+          This project is a reproducible FPGA implementation of a dual-issue LoongArch32 CPU.
+          The current RTL includes branch prediction, register renaming, a physical register file,
+          two reservation stations, a 32-entry reorder buffer, cache/memory translation, and an
+          AXI memory interface.
+        </p>
+      </section>
+
+      <section class="project-section" aria-labelledby="usage-title">
+        <h2 id="usage-title">Usage and reproduction</h2>
+        <ol>
+          <li>Use Windows with Vivado 2023.2 and the target FPGA board connected through JTAG.</li>
+          <li>Open PowerShell in <code>fpga/nscscc-team/run_vivado</code>.</li>
+          <li>Set the Vivado architecture environment variable before running batch scripts:</li>
+        </ol>
+        <pre><code>$env:PROCESSOR_ARCHITECTURE = 'AMD64'</code></pre>
+        <p>Run the functional board test:</p>
+        <pre><code>&amp; 'C:\Xilinx\Vivado\2023.2\bin\vivado.bat' -mode batch `
+  -log board_func.log -source codex_vio_func.tcl</code></pre>
+        <p>Expected result: <code>3a00003a</code>, corresponding to the functional <code>3A</code> result.</p>
+        <p>Run the 20-benchmark performance test:</p>
+        <pre><code>&amp; 'C:\Xilinx\Vivado\2023.2\bin\vivado.bat' -mode batch `
+  -log board_perf.log -source codex_vio_perf.tcl</code></pre>
+        <p>
+          The script tests switches <code>7E</code> through <code>6B</code> and writes one result per
+          benchmark to <code>perf_vio.csv</code>. A successful run has 20 rows, every
+          <code>correct_flag=1</code>, and non-zero SoC/CPU counters.
+        </p>
+      </section>
+
+      <section class="project-section" aria-labelledby="results-title">
+        <h2 id="results-title">Verified results</h2>
+        <div class="project-grid">
+          <div><strong>Functional board test</strong><span>3A · 3a00003a</span></div>
+          <div><strong>Performance board test</strong><span>20 / 20 correct</span></div>
+          <div><strong>CoreMark cold run</strong><span>Switch 7C · PASS</span></div>
+          <div><strong>inner_product cold run</strong><span>Switch 6F · PASS</span></div>
+        </div>
+      </section>
+
+      <section class="project-section" aria-labelledby="source-title">
+        <h2 id="source-title">Source layout</h2>
+        <p>
+          The complete source, FPGA scripts, software examples, bitstreams, simulation assets,
+          and verification reports are preserved in the repository under
+          <a href="https://github.com/hz-cao/hz-cao.github.io/tree/main/projects/cpu-kernel/source"><code>projects/cpu-kernel/source</code></a>.
+        </p>
+        <p>
+          The main reproduction notes are available in
+          <a href="source/README_SUBMISSION.md"><code>README_SUBMISSION.md</code></a> and the
+          verification summary is available in
+          <a href="source/reports/verification_summary.md"><code>reports/verification_summary.md</code></a>.
+        </p>
+      </section>
+    </main>
+  </body>
+</html>

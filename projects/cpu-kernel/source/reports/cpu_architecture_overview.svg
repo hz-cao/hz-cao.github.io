@@ -1,0 +1,217 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1000" viewBox="0 0 1600 1000">
+  <defs>
+    <marker id="arrow" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L9,4.5 L0,9 z" fill="#222"/>
+    </marker>
+    <style>
+      .title { font: 600 22px 'Microsoft YaHei','Segoe UI',Arial,sans-serif; fill:#111; }
+      .stage { font: 600 16px 'Microsoft YaHei','Segoe UI',Arial,sans-serif; fill:#111; }
+      .label { font: 500 14px 'Microsoft YaHei','Segoe UI',Arial,sans-serif; fill:#111; }
+      .small { font: 400 12px 'Microsoft YaHei','Segoe UI',Arial,sans-serif; fill:#333; }
+      .tiny { font: 400 11px 'Microsoft YaHei','Segoe UI',Arial,sans-serif; fill:#444; }
+      .box { fill:#fff; stroke:#222; stroke-width:1.5; rx:4; }
+      .group { fill:#fff; stroke:#222; stroke-width:1.2; stroke-dasharray:5 5; rx:12; }
+      .pipe { fill:none; stroke:#222; stroke-width:1.5; marker-end:url(#arrow); }
+      .pipeNoArrow { fill:none; stroke:#222; stroke-width:1.3; }
+      .feedback { fill:none; stroke:#555; stroke-width:1.2; stroke-dasharray:5 4; marker-end:url(#arrow); }
+      .boundary { stroke:#777; stroke-width:1; stroke-dasharray:3 5; }
+    </style>
+  </defs>
+
+  <rect x="0" y="0" width="1600" height="1000" fill="#fff"/>
+  <text x="800" y="34" text-anchor="middle" class="title">Current CPU Architecture — RTL-aligned overview</text>
+  <text x="800" y="55" text-anchor="middle" class="small">双发射前端 · 乱序后端 · Rename/PRF · 2×8-entry RS · 32-entry ROB · 单 LSU</text>
+
+  <!-- Pipeline boundaries -->
+  <line x1="250" y1="80" x2="250" y2="925" class="boundary"/>
+  <line x1="520" y1="80" x2="520" y2="925" class="boundary"/>
+  <line x1="820" y1="80" x2="820" y2="925" class="boundary"/>
+  <line x1="1110" y1="80" x2="1110" y2="925" class="boundary"/>
+  <line x1="1365" y1="80" x2="1365" y2="925" class="boundary"/>
+  <line x1="1515" y1="80" x2="1515" y2="925" class="boundary"/>
+  <text x="125" y="950" text-anchor="middle" class="stage">IF / Fetch</text>
+  <text x="385" y="950" text-anchor="middle" class="stage">ID / Decode</text>
+  <text x="670" y="950" text-anchor="middle" class="stage">Rename + Dispatch</text>
+  <text x="965" y="950" text-anchor="middle" class="stage">Issue / Execute</text>
+  <text x="1235" y="950" text-anchor="middle" class="stage">MEM / Complete</text>
+  <text x="1440" y="950" text-anchor="middle" class="stage">WB / Commit</text>
+
+  <!-- External AXI -->
+  <line x1="1250" y1="82" x2="1250" y2="25" class="pipe"/>
+  <text x="1250" y="18" text-anchor="middle" class="label">AXI4 / SoC memory</text>
+  <rect x="1165" y="82" width="170" height="44" class="box"/>
+  <text x="1250" y="109" text-anchor="middle" class="label">axi_bridge</text>
+  <text x="1250" y="124" text-anchor="middle" class="tiny">instruction + data channels</text>
+
+  <!-- Fetch prediction -->
+  <rect x="28" y="92" width="204" height="126" class="group"/>
+  <text x="130" y="111" text-anchor="middle" class="label">pred / branch predictor</text>
+  <rect x="42" y="126" width="78" height="30" class="box"/><text x="81" y="145" text-anchor="middle" class="small">BTB</text>
+  <rect x="132" y="126" width="86" height="30" class="box"/><text x="175" y="145" text-anchor="middle" class="small">BHT 256×8</text>
+  <rect x="42" y="171" width="86" height="30" class="box"/><text x="85" y="190" text-anchor="middle" class="small">PHT 512×2</text>
+  <rect x="140" y="171" width="72" height="30" class="box"/><text x="176" y="190" text-anchor="middle" class="small">RAS 16</text>
+
+  <rect x="58" y="260" width="116" height="44" class="box"/>
+  <text x="116" y="278" text-anchor="middle" class="label">PC</text>
+  <text x="116" y="295" text-anchor="middle" class="tiny">reset: 0x1c000000</text>
+  <rect x="36" y="333" width="188" height="58" class="box"/>
+  <text x="130" y="357" text-anchor="middle" class="label">if_stage</text>
+  <text x="130" y="377" text-anchor="middle" class="small">fetch / redirect / dual issue</text>
+
+  <!-- Instruction MMU and I-cache -->
+  <rect x="267" y="106" width="100" height="46" class="box"/>
+  <text x="317" y="126" text-anchor="middle" class="label">MMU-I</text>
+  <text x="317" y="143" text-anchor="middle" class="tiny">addr_trans + TLB</text>
+  <rect x="270" y="250" width="220" height="190" class="group"/>
+  <text x="380" y="274" text-anchor="middle" class="label">icache</text>
+  <rect x="286" y="292" width="86" height="40" class="box"/><text x="329" y="316" text-anchor="middle" class="small">data way 0</text>
+  <rect x="386" y="292" width="86" height="40" class="box"/><text x="429" y="316" text-anchor="middle" class="small">data way 1</text>
+  <rect x="286" y="347" width="86" height="40" class="box"/><text x="329" y="371" text-anchor="middle" class="small">tag way 0</text>
+  <rect x="386" y="347" width="86" height="40" class="box"/><text x="429" y="371" text-anchor="middle" class="small">tag way 1</text>
+  <text x="380" y="414" text-anchor="middle" class="tiny">2-way · 128 sets · 32-byte line</text>
+
+  <!-- Decode -->
+  <rect x="548" y="210" width="116" height="42" class="box"/>
+  <text x="606" y="236" text-anchor="middle" class="label">IF/ID regs</text>
+  <rect x="548" y="284" width="116" height="42" class="box"/><text x="606" y="310" text-anchor="middle" class="label">ibuf</text>
+  <rect x="535" y="365" width="92" height="46" class="box"/><text x="581" y="393" text-anchor="middle" class="label">id_stage A</text>
+  <rect x="643" y="365" width="92" height="46" class="box"/><text x="689" y="393" text-anchor="middle" class="label">id_stage B</text>
+  <text x="635" y="430" text-anchor="middle" class="tiny">opcode / operands / branch / CSR decode</text>
+
+  <!-- Rename and register structures -->
+  <rect x="545" y="484" width="120" height="58" class="box"/>
+  <text x="605" y="507" text-anchor="middle" class="label">regfile</text>
+  <text x="605" y="527" text-anchor="middle" class="small">4R / 2W architectural</text>
+  <rect x="690" y="290" width="112" height="62" class="box"/>
+  <text x="746" y="315" text-anchor="middle" class="label">rename</text>
+  <text x="746" y="334" text-anchor="middle" class="small">RAT + free list</text>
+  <rect x="690" y="395" width="112" height="62" class="box"/>
+  <text x="746" y="420" text-anchor="middle" class="label">PRF</text>
+  <text x="746" y="439" text-anchor="middle" class="small">64×32 · ready bits</text>
+  <text x="746" y="475" text-anchor="middle" class="tiny">physical tags / source read / wakeup data</text>
+
+  <!-- Reservation stations -->
+  <rect x="845" y="205" width="190" height="82" class="group"/>
+  <text x="940" y="229" text-anchor="middle" class="label">RS_ALU0</text>
+  <text x="940" y="250" text-anchor="middle" class="small">8 entries · slot A</text>
+  <text x="940" y="270" text-anchor="middle" class="tiny">ready / select / issue</text>
+  <rect x="845" y="330" width="190" height="82" class="group"/>
+  <text x="940" y="354" text-anchor="middle" class="label">RS_ALU1</text>
+  <text x="940" y="375" text-anchor="middle" class="small">8 entries · slot B</text>
+  <text x="940" y="395" text-anchor="middle" class="tiny">ready / select / issue</text>
+  <rect x="845" y="462" width="190" height="52" class="box"/>
+  <text x="940" y="484" text-anchor="middle" class="label">wakeup / forwarding</text>
+  <text x="940" y="502" text-anchor="middle" class="tiny">EX1 A/B + WB A/B broadcasts</text>
+
+  <!-- ROB and memory ordering -->
+  <rect x="682" y="680" width="250" height="78" class="group"/>
+  <text x="807" y="707" text-anchor="middle" class="label">ROB · 32 entries</text>
+  <text x="807" y="729" text-anchor="middle" class="small">2-wide allocate / in-order retire</text>
+  <text x="807" y="747" text-anchor="middle" class="tiny">completion, exception, branch recovery</text>
+  <rect x="954" y="670" width="145" height="58" class="box"/>
+  <text x="1026" y="695" text-anchor="middle" class="label">mem_disambig</text>
+  <text x="1026" y="714" text-anchor="middle" class="tiny">ordering violation / replay</text>
+
+  <!-- Execution units -->
+  <rect x="1128" y="205" width="130" height="48" class="box"/>
+  <text x="1193" y="225" text-anchor="middle" class="label">ALU A</text>
+  <text x="1193" y="242" text-anchor="middle" class="tiny">branch resolve</text>
+  <rect x="1128" y="286" width="130" height="48" class="box"/>
+  <text x="1193" y="315" text-anchor="middle" class="label">ALU B</text>
+  <rect x="1128" y="365" width="130" height="42" class="box"/><text x="1193" y="391" text-anchor="middle" class="label">MUL A / MUL B</text>
+  <rect x="1128" y="435" width="130" height="42" class="box"/><text x="1193" y="461" text-anchor="middle" class="label">DIV</text>
+  <rect x="1128" y="515" width="130" height="58" class="box"/>
+  <text x="1193" y="538" text-anchor="middle" class="label">LSU</text>
+  <text x="1193" y="558" text-anchor="middle" class="tiny">single memory execution port</text>
+
+  <!-- Data MMU and D-cache -->
+  <rect x="1015" y="790" width="125" height="48" class="box"/>
+  <text x="1077" y="811" text-anchor="middle" class="label">MMU-D</text>
+  <text x="1077" y="829" text-anchor="middle" class="tiny">addr_trans + TLB</text>
+  <rect x="1160" y="635" width="205" height="190" class="group"/>
+  <text x="1262" y="659" text-anchor="middle" class="label">dcache</text>
+  <rect x="1175" y="680" width="78" height="40" class="box"/><text x="1214" y="704" text-anchor="middle" class="small">data way 0</text>
+  <rect x="1268" y="680" width="78" height="40" class="box"/><text x="1307" y="704" text-anchor="middle" class="small">data way 1</text>
+  <rect x="1175" y="735" width="78" height="40" class="box"/><text x="1214" y="759" text-anchor="middle" class="small">tag way 0</text>
+  <rect x="1268" y="735" width="78" height="40" class="box"/><text x="1307" y="759" text-anchor="middle" class="small">tag way 1</text>
+  <text x="1262" y="807" text-anchor="middle" class="tiny">2-way · 128 sets · refill / replace / writeback</text>
+
+  <!-- WB / commit -->
+  <rect x="1385" y="230" width="115" height="55" class="box"/>
+  <text x="1442" y="253" text-anchor="middle" class="label">EX2 / WB</text>
+  <text x="1442" y="271" text-anchor="middle" class="tiny">result + exception</text>
+  <rect x="1385" y="360" width="115" height="64" class="box"/>
+  <text x="1442" y="384" text-anchor="middle" class="label">ROB retire</text>
+  <text x="1442" y="403" text-anchor="middle" class="small">in-order commit</text>
+  <rect x="1385" y="500" width="115" height="64" class="box"/>
+  <text x="1442" y="524" text-anchor="middle" class="label">CSR</text>
+  <text x="1442" y="543" text-anchor="middle" class="tiny">interrupt / exception</text>
+  <rect x="1377" y="680" width="132" height="72" class="group"/>
+  <text x="1443" y="706" text-anchor="middle" class="label">MMU / TLB</text>
+  <text x="1443" y="726" text-anchor="middle" class="small">32-entry TLB</text>
+  <text x="1443" y="743" text-anchor="middle" class="tiny">i-side + d-side lookup</text>
+
+  <!-- Main data/control arrows -->
+  <path d="M116,304 L116,333" class="pipe"/>
+  <path d="M130,218 L130,260" class="feedback"/>
+  <path d="M174,282 C215,282 215,170 130,170" class="feedback"/>
+  <path d="M174,360 L270,360" class="pipe"/>
+  <path d="M490,440 C650,470 900,170 1165,105" class="feedback"/>
+  <path d="M367,360 L490,360 L490,231 L548,231" class="pipe"/>
+  <path d="M490,360 L490,305 L548,305" class="pipe"/>
+  <path d="M317,152 L317,250" class="pipe"/>
+  <path d="M270,360 C245,360 238,360 224,360" class="pipe"/>
+  <path d="M606,252 L606,284" class="pipe"/>
+  <path d="M606,326 L606,365" class="pipe"/>
+  <path d="M581,411 L581,484" class="pipe"/>
+  <path d="M689,411 L689,450 L665,450 L665,512" class="pipe"/>
+  <path d="M627,388 L690,321" class="pipe"/>
+  <path d="M689,388 L802,321" class="pipe"/>
+  <path d="M746,352 L746,395" class="pipe"/>
+  <path d="M802,321 L845,246" class="pipe"/>
+  <path d="M802,321 L845,371" class="pipe"/>
+  <path d="M802,426 L845,246" class="feedback"/>
+  <path d="M802,426 L845,371" class="feedback"/>
+  <path d="M802,457 C830,520 830,670 807,680" class="pipe"/>
+  <path d="M807,680 L807,600 L605,542" class="feedback"/>
+  <path d="M1035,246 L1128,229" class="pipe"/>
+  <path d="M1035,371 L1128,310" class="pipe"/>
+  <path d="M1035,246 L1128,386" class="pipe"/>
+  <path d="M1035,371 L1128,456" class="pipe"/>
+  <path d="M1035,371 L1128,544" class="pipe"/>
+  <path d="M1258,229 L1385,257" class="pipe"/>
+  <path d="M1258,310 L1385,257" class="pipe"/>
+  <path d="M1258,386 L1385,257" class="pipe"/>
+  <path d="M1258,456 L1385,257" class="pipe"/>
+  <path d="M1258,544 L1160,700" class="pipe"/>
+  <path d="M1160,700 L1365,700 L1365,392 L1385,392" class="pipe"/>
+  <path d="M1385,392 L1035,488" class="feedback"/>
+  <path d="M1385,392 L802,426" class="feedback"/>
+  <path d="M1385,392 L665,512" class="feedback"/>
+  <path d="M1500,392 L1500,500" class="pipe"/>
+  <path d="M1385,532 C1320,532 1320,860 1077,860 L1077,838" class="pipe"/>
+  <path d="M1140,814 L1160,760" class="pipe"/>
+  <path d="M1365,700 C1400,600 1400,160 1335,105" class="feedback"/>
+  <path d="M1500,532 C1530,532 1530,120 1250,126" class="feedback"/>
+  <path d="M1377,715 C1310,715 1310,860 1140,860" class="feedback"/>
+  <path d="M1377,715 C1290,715 1290,160 317,152" class="feedback"/>
+  <path d="M1377,715 L1258,544" class="feedback"/>
+
+  <!-- Flush/recovery annotations -->
+  <path d="M1193,205 C1193,150 950,150 130,150" class="feedback"/>
+  <text x="1010" y="139" class="tiny">branch mispredict → redirect / flush</text>
+  <path d="M1442,500 C1320,500 1320,120 116,120" class="feedback"/>
+  <text x="1080" y="104" class="tiny">exception / interrupt → CSR target → IF</text>
+
+  <!-- Legend -->
+  <!--
+  <line x1="35" y1="885" x2="95" y2="885" class="pipe"/><text x="105" y="889" class="tiny">主数据/控制通路</text>
+  <line x1="250" y1="885" x2="310" y2="885" class="feedback"/><text x="320" y="889" class="tiny">反馈、唤醒、重定向、提交回写</text>
+  <text x="35" y="915" class="tiny">注：图按当前 IP/myCPU/core.v 与 mycpu_top.v 的实例化关系抽象；省略了总线握手信号和逐位宽度。</text>
+  -->
+  <line x1="35" y1="885" x2="95" y2="885" class="pipe"/>
+  <text x="105" y="889" class="tiny">main data/control path</text>
+  <line x1="250" y1="885" x2="310" y2="885" class="feedback"/>
+  <text x="320" y="889" class="tiny">feedback / wakeup / redirect / commit writeback</text>
+  <text x="35" y="915" class="tiny">Note: abstracted from current IP/myCPU/core.v and mycpu_top.v instantiations; bus handshakes and bit widths are omitted.</text>
+</svg>

@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta
       name="description"
-      content="Personal homepage of Haozhuo Cao, focusing on generative diffusion models, operator optimization, and AI infrastructure."
+      content="Personal homepage of Haozhuo Cao, featuring research papers and an FPGA CPU architecture project."
     />
     <title>hz-cao</title>
-    <link rel="stylesheet" href="styles.css?v=20260729-4" />
+    <link rel="stylesheet" href="styles.css?v=20260804-1" />
   </head>
   <body>
     <header class="site-header">
@@ -61,6 +61,30 @@
         <div class="section-inner">
           <h2 class="sr-only" id="publications-title">Publications</h2>
           <article class="publication">
+            <a class="paper-thumb" href="projects/cpu-kernel/" aria-label="Open the CPU Kernel FPGA project page">
+              <img
+                src="assets/cpu_kernel.svg"
+                alt="CPU Kernel project cover graphic."
+              />
+            </a>
+            <div class="paper-copy">
+              <h3>LoongArch32 Out-of-Order CPU on FPGA</h3>
+              <p class="paper-authors">
+                <a href="https://github.com/hz-cao">Haozhuo Cao</a>
+              </p>
+              <p class="paper-venue">FPGA / CPU Architecture Project, 2026 08</p>
+              <p class="paper-summary">
+                A dual-issue LoongArch32 CPU with branch prediction, register renaming,
+                physical registers, reservation stations, a reorder buffer, caches, MMU/TLB,
+                and AXI memory access.
+              </p>
+              <div class="paper-links" aria-label="CPU Kernel project links">
+                <a href="projects/cpu-kernel/">project</a>
+                <a href="https://github.com/hz-cao/hz-cao.github.io/tree/main/projects/cpu-kernel/source">Code</a>
+              </div>
+            </div>
+          </article>
+          <article class="publication">
             <a class="paper-thumb" href="https://github.com/hz-cao/GeomFlow" aria-label="Open GeomFlow code repository">
               <img
                 src="assets/geomflow-architecture.png"
@@ -72,7 +96,7 @@
               <p class="paper-authors">
                 <a href="#">Haozhuo Cao</a>, Xiaorui Wang, Liyang Yu, and Wangcai Ding
               </p>
-              <p class="paper-venue">Neurocomputing, 2026</p>
+              <p class="paper-venue">Neurocomputing, 2026 02</p>
               <div class="paper-links" aria-label="GeomFlow publication links">
                 <a href="https://github.com/hz-cao/GeomFlow">code</a>
                 <a href="assets/geomflow.bib">bibtex</a>

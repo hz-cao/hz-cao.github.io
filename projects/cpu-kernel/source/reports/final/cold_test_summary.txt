@@ -1,0 +1,18 @@
+Board cold-test summary, 2026-07-17
+
+Bitstream: fpga/nscscc-team/run_vivado/bitstreams/soc_top_perf.bit
+Program: software/examples/nscscc_perf/obj/allbench/inst_data.bin
+
+Switch 7C, CoreMark:
+  completion: approximately 1100 ms
+  num_data: 0x00e37b56
+  led_rg0: 1
+  led_rg1: 1
+  result: PASS
+
+Switch 6F, inner_product:
+  completion: approximately 1300 ms
+  num_data: 0x02797645
+  led_rg0: 1
+  led_rg1: 1
+  result: PASS

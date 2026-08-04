@@ -1,0 +1,21 @@
+Version-2 OoO verified checkpoint
+Updated: 2026-07-17
+
+Verified results:
+  - XSim functional regression: 58/58 PASS
+  - Board functional test: 0x3a00003a
+  - Board performance test: 20/20 correct_flag=1
+  - Performance timing: WNS +0.003 ns, WHS +0.054 ns
+  - Function timing: WNS +0.067 ns, WHS +0.052 ns
+
+Active architecture:
+  - dual issue, dual execute, dual retire
+  - 32-entry ROB and two 8-entry reservation stations
+  - 64-entry PRF with ready scoreboard and tag wakeup
+  - oldest-ready Wakeup-Select
+  - 256-entry 2-way BTB
+  - 256-entry BHT, 512-entry 2-bit PHT, 8-bit history, 16-entry RAS
+  - speculative load/store disambiguation with ordering replay
+  - adaptive serialization after repeated ordering violations
+
+Final artifacts and reproduction commands are documented in README_SUBMISSION.md.
