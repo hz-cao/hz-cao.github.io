@@ -1,110 +1,79 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta
-      name="description"
-      content="Personal homepage of Haozhuo Cao, featuring research papers and an FPGA CPU architecture project."
-    />
-    <title>hz-cao</title>
-    <link rel="stylesheet" href="styles.css?v=20260804-1" />
-  </head>
-  <body>
-    <header class="site-header">
-      <a class="brand" href="#">hz-cao</a>
-      <nav aria-label="Primary links">
-        <a href="assets/resume.pdf">CV</a>
-        <a href="#publications">Papers</a>
-        <a href="https://github.com/hz-cao/GeomFlow">Code</a>
-      </nav>
-    </header>
-
-    <main>
-      <section class="profile">
-        <figure class="portrait">
-          <img src="assets/profile.png" alt="Portrait of Haozhuo Cao." />
-        </figure>
-        <div class="profile-copy">
-          <h1>Haozhuo Cao <span>(曹昊卓)</span></h1>
-          <p>
-            I am an undergraduate student in Computer Science and Technology at Qinghai
-            University.
-          </p>
-          <p>
-            My research interests include generative diffusion models, diffusion operator
-            optimization, and AI infrastructure.
-          </p>
-          <p class="contact-info">
-            My contact info:<br />
-            Email: <a href="mailto:13086257969@163.com">13086257969@163.com</a><br />
-            GitHub: <a href="https://github.com/hz-cao">hz-cao</a><br />
-            CV: <a href="assets/resume.pdf">resume.pdf</a>
-          </p>
-        </div>
-      </section>
-
-      <section class="awards" aria-labelledby="awards-title">
-        <div class="section-inner">
-          <h2 id="awards-title">Awards</h2>
-          <ul>
-            <li>National Second Prize, China Undergraduate Mathematical Contest in Modeling, 2025</li>
-            <li>National Second Prize, National Undergraduate Simulation Modeling Challenge, 2025</li>
-            <li>National Second Prize, Undergraduate Physics Competition of Some Regions in China, 2025</li>
-            <li>Provincial First Prize, Lanqiao Cup C/C++ Programming Contest, University Group A, 2026</li>
-            <li>Regional Silver Award, MATI Cup Programming Competition, Undergraduate Track, 2026</li>
-          </ul>
-        </div>
-      </section>
-
-      <section class="publications" id="publications" aria-labelledby="publications-title">
-        <div class="section-inner">
-          <h2 class="sr-only" id="publications-title">Publications</h2>
-          <article class="publication">
-            <a class="paper-thumb" href="projects/cpu-kernel/" aria-label="Open the CPU Kernel FPGA project page">
-              <img
-                src="assets/cpu_kernel_cover.png"
-                alt="LoongArch32 CPU architecture cover."
-              />
-            </a>
-            <div class="paper-copy">
-              <h3>LoongArch32 Out-of-Order CPU on FPGA</h3>
-              <p class="paper-authors">
-                <a href="https://github.com/hz-cao">Haozhuo Cao</a>
-              </p>
-              <p class="paper-venue">FPGA / CPU Architecture Project, 2026 08</p>
-              <p class="paper-summary">
-                A dual-issue LoongArch32 CPU with branch prediction, register renaming,
-                physical registers, reservation stations, a reorder buffer, caches, MMU/TLB,
-                and AXI memory access.
-              </p>
-              <div class="paper-links" aria-label="CPU Kernel project links">
-                <a href="projects/cpu-kernel/">project</a>
-                <a href="https://github.com/hz-cao/cpu-kernel">Code</a>
-              </div>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Personal homepage of Haozhuo Cao, featuring research papers and an FPGA CPU architecture project." />
+  <title>hz-cao</title>
+  <link rel="stylesheet" href="styles.css?v=20260813-1" />
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="#">hz-cao</a>
+    <nav aria-label="Primary links">
+      <a href="assets/resume.pdf">CV</a>
+      <a href="#publications">Papers</a>
+      <a href="https://github.com/hz-cao/GeomFlow">Code</a>
+    </nav>
+  </header>
+  <main>
+    <section class="profile">
+      <figure class="portrait">
+        <img src="assets/profile.png" alt="Portrait of Haozhuo Cao." />
+      </figure>
+      <div class="profile-copy">
+        <h1>Haozhuo Cao <span>(曹昊卓)</span></h1>
+        <p>I am an undergraduate student in Computer Science and Technology at Qinghai University.</p>
+        <p>My research interests include generative diffusion models, diffusion operator optimization, and AI infrastructure.</p>
+        <p class="contact-info">My contact info:<br />Email: <a href="mailto:13086257969@163.com">13086257969@163.com</a><br />GitHub: <a href="https://github.com/hz-cao">hz-cao</a><br />CV: <a href="assets/resume.pdf">resume.pdf</a></p>
+      </div>
+    </section>
+    <section class="awards" aria-labelledby="awards-title">
+      <div class="section-inner">
+        <h2 id="awards-title">Awards</h2>
+        <ul>
+          <li>National Second Prize, China Undergraduate Mathematical Contest in Modeling, 2025</li>
+          <li>National Second Prize, National Undergraduate Simulation Modeling Challenge, 2025</li>
+          <li>National Second Prize, Undergraduate Physics Competition of Some Regions in China, 2025</li>
+          <li>Provincial First Prize, Lanqiao Cup C/C++ Programming Contest, University Group A, 2026</li>
+          <li>Regional Silver Award, MATI Cup Programming Competition, Undergraduate Track, 2026</li>
+        </ul>
+      </div>
+    </section>
+    <section class="publications" id="publications" aria-labelledby="publications-title">
+      <div class="section-inner">
+        <h2 class="sr-only" id="publications-title">Publications</h2>
+        <article class="publication">
+          <a class="paper-thumb" href="projects/cpu-kernel/" aria-label="Open the CPU Kernel FPGA project page">
+            <img src="https://github.com/hz-cao/cpu-kernel/blob/main/evidence/functional/functional-3a.jpg?raw=true" alt="LoongArch32 CPU functional architecture diagram." />
+          </a>
+          <div class="paper-copy">
+            <h3>LoongArch32 Out-of-Order CPU on FPGA</h3>
+            <p class="paper-authors"><a href="https://github.com/hz-cao">Haozhuo Cao</a></p>
+            <p class="paper-venue">FPGA / CPU Architecture Project, 2026 08</p>
+            <p class="paper-summary">A dual-issue LoongArch32 CPU with branch prediction, register renaming, physical registers, reservation stations, a reorder buffer, caches, MMU/TLB, and AXI memory access.</p>
+            <div class="paper-links" aria-label="CPU Kernel project links">
+              <a href="https://github.com/hz-cao/cpu-kernel">Code</a>
+              <a href="projects/cpu-kernel/">Project</a>
             </div>
-          </article>
-          <article class="publication">
-            <a class="paper-thumb" href="https://github.com/hz-cao/GeomFlow" aria-label="Open GeomFlow code repository">
-              <img
-                src="assets/geomflow-architecture.png"
-                alt="Thumbnail of the GeomFlow architecture diagram."
-              />
-            </a>
-            <div class="paper-copy">
-              <h3>GeomFlow: Geometry-aware adaptive diffusion model via Hessian information</h3>
-              <p class="paper-authors">
-                <a href="#">Haozhuo Cao</a>, Xiaorui Wang, Liyang Yu, and Wangcai Ding
-              </p>
-              <p class="paper-venue">Neurocomputing, 2026 02</p>
-              <div class="paper-links" aria-label="GeomFlow publication links">
-                <a href="https://github.com/hz-cao/GeomFlow">code</a>
-                <a href="assets/geomflow.bib">bibtex</a>
-              </div>
+          </div>
+        </article>
+        <article class="publication">
+          <a class="paper-thumb" href="https://github.com/hz-cao/GeomFlow" aria-label="Open GeomFlow code repository">
+            <img src="assets/geomflow-cover.png" alt="GeomFlow image inpainting results." />
+          </a>
+          <div class="paper-copy">
+            <h3>GeomFlow: Geometry-aware adaptive diffusion model via Hessian information</h3>
+            <p class="paper-authors"><a href="#">Haozhuo Cao</a>, Xiaorui Wang, Liyang Yu, and Wangcai Ding</p>
+            <p class="paper-venue">Neurocomputing, 2026 02</p>
+            <div class="paper-links" aria-label="GeomFlow publication links">
+              <a href="https://github.com/hz-cao/GeomFlow">Code</a>
+              <a href="assets/geomflow.bib">BibTeX</a>
             </div>
-          </article>
-        </div>
-      </section>
-    </main>
-  </body>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+</body>
 </html>
